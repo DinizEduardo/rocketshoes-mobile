@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { View } from 'react-native';
+import { View, TouchableHighlight } from 'react-native';
 import { Container, Items, Logo } from './styles';
 
-function Header() {
+function Header({ navigation }) {
   return (
     <Container>
-      <Logo />
+      <TouchableHighlight onPress={() => navigation.navigate('Main')}>
+        <Logo />
+      </TouchableHighlight>
       <View>
-        <Icon name="shopping-basket" color="#FFF" size={24} />
+        <Icon
+          name="shopping-basket"
+          color="#FFF"
+          size={24}
+          onPress={() => navigation.navigate('Cart')}
+        />
         <Items>0</Items>
       </View>
     </Container>
