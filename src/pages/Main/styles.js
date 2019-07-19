@@ -4,8 +4,8 @@ import { darken } from 'polished';
 
 export const Container = styled.View`
   padding: 40px;
-  height: 100%;
   background: #191920;
+  height: 100%;
 `;
 
 export const ProdImage = styled.Image`
@@ -14,13 +14,11 @@ export const ProdImage = styled.Image`
 `;
 
 export const Product = styled.View`
-  height: 305px;
   background: #fff;
-  width: 200px;
-  align-items: center;
-  border: 1px solid #000;
-  border-radius: 4px;
   padding: 10px;
+  margin: 15px;
+  border-radius: 4px;
+  width: 220px;
 `;
 
 export const ProdInfos = styled.View`
@@ -31,6 +29,7 @@ export const AddButton = styled(RectButton)`
   border-radius: 4px;
   height: 30px;
   margin-bottom: 30px;
+  margin-top: auto;
   flex-direction: row;
   background: #7159c1;
   justify-content: space-between;
