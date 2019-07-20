@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { View, TouchableHighlight } from 'react-native';
 import { Container, Items, Logo } from './styles';
+// import console = require('console');
 
-function Header({ navigation }) {
+function Header({ navigation, cartSize }) {
+  const amount = cartSize;
+
   return (
     <Container>
       <TouchableHighlight onPress={() => navigation.navigate('Main')}>
@@ -17,10 +20,12 @@ function Header({ navigation }) {
           size={24}
           onPress={() => navigation.navigate('Cart')}
         />
-        <Items>0</Items>
+        <Items>{amount || 0}</Items>
       </View>
     </Container>
   );
 }
 
-export default Header;
+export default connect(state => ({
+  cartSize: state.cart.length,
+}))(Header);
