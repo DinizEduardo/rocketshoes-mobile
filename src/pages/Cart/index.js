@@ -24,7 +24,16 @@ import {
 } from './styles';
 // import console = require('console');
 
-function Cart({ products }) {
+// handleDelete = id => {
+//   const { dispatch } = this.props;
+
+//   dispatch({
+//     type: '@cart/DELETE',
+//     id,
+//   });
+// };
+
+function Cart({ products, dispatch }) {
   return (
     <Background>
       <Container>
@@ -41,7 +50,14 @@ function Cart({ products }) {
                   <ProductName>{product.title}</ProductName>
                   <ProductPrice>{product.price}</ProductPrice>
                 </ProductDetails>
-                <Icon name="delete-forever" color="#7159c1" size={24} />
+                <Icon
+                  name="delete-forever"
+                  color="#7159c1"
+                  size={24}
+                  onPress={() =>
+                    dispatch({ type: '@cart/DELETE', id: product.id })
+                  }
+                />
               </ProductInfo>
               <ProductAmount>
                 <Amount>
@@ -50,7 +66,7 @@ function Cart({ products }) {
                     color="#7159c1"
                     size={16}
                   />
-                  <InputAmount value="1" />
+                  <InputAmount value={String(product.amount)} />
                   <Icon name="add-circle-outline" color="#7159c1" size={16} />
                 </Amount>
                 <TotalPrice>R$ 359,80</TotalPrice>

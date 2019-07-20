@@ -37,7 +37,7 @@ class Main extends Component {
 
   render() {
     const { products } = this.state;
-
+    console.tron.log(products);
     return (
       <Container>
         <View>
@@ -61,7 +61,7 @@ class Main extends Component {
                   <AddButton onPress={() => this.handleAddToCart(item)}>
                     <ItemAmount>
                       <Icon name="add-shopping-cart" size={20} color="#fff" />
-                      <TextAmount>0</TextAmount>
+                      <TextAmount>{item.amount || 0}</TextAmount>
                     </ItemAmount>
                     <AddButtonText>ADICIONAR</AddButtonText>
                   </AddButton>
