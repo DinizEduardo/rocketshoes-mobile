@@ -7,7 +7,7 @@ import { Container, Items, Logo } from './styles';
 
 function Header({ navigation, cartSize }) {
   const amount = cartSize;
-
+  console.tron.log(amount);
   return (
     <Container>
       <TouchableHighlight onPress={() => navigation.navigate('Main')}>

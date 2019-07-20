@@ -1,9 +1,15 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView`
-  padding: 20px;
-  height: 100%;
+export const Background = styled.View`
   background: #191920;
+  height: 100%;
+`;
+
+export const Container = styled.ScrollView`
+  padding: 10px;
+  background: #191920;
+  border-radius: 4px;
+  margin: 15px;
 `;
 
 export const CartContainer = styled.View`
