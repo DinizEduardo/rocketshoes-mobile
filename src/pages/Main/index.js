@@ -36,7 +36,6 @@ class Main extends Component {
 
   render() {
     const { products } = this.state;
-    console.tron.log(products);
     return (
       <Container>
         <View>
