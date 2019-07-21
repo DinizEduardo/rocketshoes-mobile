@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Text, FlatList, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../services/api';
+import * as CartActions from '../../store/modules/cart/actions';
 import {
   Container,
   ProdImage,
@@ -27,12 +29,9 @@ class Main extends Component {
   }
 
   handleAddToCart = product => {
-    const { dispatch } = this.props;
+    const { addToCart } = this.props;
 
-    dispatch({
-      type: '@cart/ADD',
-      product,
-    });
+    addToCart(product);
   };
 
   render() {
@@ -75,4 +74,10 @@ class Main extends Component {
   }
 }
 
-export default connect()(Main);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Main);
