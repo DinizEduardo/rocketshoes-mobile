@@ -50,7 +50,7 @@ function Cart({ products, removeFromCart, updateAmount, total }) {
                   />
                   <ProductDetails>
                     <ProductName>{product.title}</ProductName>
-                    <ProductPrice>{product.price}</ProductPrice>
+                    <ProductPrice>R$ {product.price}</ProductPrice>
                   </ProductDetails>
                   <Icon
                     name="delete-forever"
