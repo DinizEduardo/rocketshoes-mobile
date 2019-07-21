@@ -19,6 +19,20 @@ export const CartContainer = styled.View`
   margin-bottom: 40px;
 `;
 
+export const EmptyCart = styled.View`
+  flex: 1;
+  align-items: center;
+  padding: 25px;
+  background: #fff;
+  border-radius: 4px;
+`;
+
+export const EmptyText = styled.Text`
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+`;
+
 export const Product = styled.View``;
 
 export const ProductInfo = styled.View`

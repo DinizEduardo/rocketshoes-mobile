@@ -22,6 +22,8 @@ import {
   FinishButton,
   FinishText,
   Background,
+  EmptyCart,
+  EmptyText,
 } from './styles';
 
 function Cart({ products, removeFromCart, updateAmount, total }) {
@@ -36,54 +38,61 @@ function Cart({ products, removeFromCart, updateAmount, total }) {
   return (
     <Background>
       <Container>
-        <CartContainer>
-          {products.map(product => (
-            <Product key={product.id}>
-              <ProductInfo>
-                <ProdImage
-                  source={{
-                    uri: product.image,
-                  }}
-                />
-                <ProductDetails>
-                  <ProductName>{product.title}</ProductName>
-                  <ProductPrice>{product.price}</ProductPrice>
-                </ProductDetails>
-                <Icon
-                  name="delete-forever"
-                  color="#7159c1"
-                  size={24}
-                  onPress={() => removeFromCart(product.id)}
-                />
-              </ProductInfo>
-              <ProductAmount>
-                <Amount>
-                  <Icon
-                    name="remove-circle-outline"
-                    color="#7159c1"
-                    size={16}
-                    onPress={() => decrement(product)}
+        {products.length ? (
+          <CartContainer>
+            {products.map(product => (
+              <Product key={product.id}>
+                <ProductInfo>
+                  <ProdImage
+                    source={{
+                      uri: product.image,
+                    }}
                   />
-                  <InputAmount value={String(product.amount)} />
+                  <ProductDetails>
+                    <ProductName>{product.title}</ProductName>
+                    <ProductPrice>{product.price}</ProductPrice>
+                  </ProductDetails>
                   <Icon
-                    name="add-circle-outline"
+                    name="delete-forever"
                     color="#7159c1"
-                    size={16}
-                    onPress={() => increment(product)}
+                    size={24}
+                    onPress={() => removeFromCart(product.id)}
                   />
-                </Amount>
-                <TotalPrice>R$ {product.subtotal}</TotalPrice>
-              </ProductAmount>
-            </Product>
-          ))}
-          <TotalCart>
-            <TotalText>TOTAL</TotalText>
-            <TotalCartPrice>R$ {total}</TotalCartPrice>
-          </TotalCart>
-          <FinishButton>
-            <FinishText>FINALIZAR COMPRA</FinishText>
-          </FinishButton>
-        </CartContainer>
+                </ProductInfo>
+                <ProductAmount>
+                  <Amount>
+                    <Icon
+                      name="remove-circle-outline"
+                      color="#7159c1"
+                      size={16}
+                      onPress={() => decrement(product)}
+                    />
+                    <InputAmount value={String(product.amount)} />
+                    <Icon
+                      name="add-circle-outline"
+                      color="#7159c1"
+                      size={16}
+                      onPress={() => increment(product)}
+                    />
+                  </Amount>
+                  <TotalPrice>R$ {product.subtotal}</TotalPrice>
+                </ProductAmount>
+              </Product>
+            ))}
+            <TotalCart>
+              <TotalText>TOTAL</TotalText>
+              <TotalCartPrice>R$ {total}</TotalCartPrice>
+            </TotalCart>
+            <FinishButton>
+              <FinishText>FINALIZAR COMPRA</FinishText>
+            </FinishButton>
+          </CartContainer>
+        ) : (
+          <EmptyCart>
+            <Icon name="remove-shopping-cart" size={58} color="#eee" />
+            <EmptyText>Seu carrinho está vazio.</EmptyText>
+          </EmptyCart>
+        )}
       </Container>
     </Background>
   );
